@@ -24,6 +24,7 @@ public class Move {
         board.board[oldRow][oldColumn] = 'x';
 
         if (toPiece != null) {
+            toPiece.setCaptured(true);
         }
     }
 }

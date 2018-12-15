@@ -17,8 +17,15 @@ abstract public class Piece {
     public abstract void checkMoves(Board board, Moves moves, Player opponent);
 
     //Implemented methods
+    public Piece (char name, byte row, byte column) {
+        this.name = name;
+        this.row = row;
+        this.column = column;
+        captured = false;
+    }
     public byte getRow() {return row;}
     public byte getColumn() {return column;}
+    public void setCaptured(boolean captured){this.captured = captured;}
 
     public boolean checkMove(Board board, Moves moves, Player opponent, byte row, byte column) {
 
