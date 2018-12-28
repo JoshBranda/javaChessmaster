@@ -4,11 +4,11 @@ import com.chess.Board;
 import com.chess.Pieces.Piece;
 
 public class Move {
-    private byte oldRow, oldColumn, newRow, newColumn;
+    private int oldRow, oldColumn, newRow, newColumn;
     private int value;
     private Piece fromPiece, toPiece;
 
-    public Move (byte oldRow, byte oldColumn, byte newRow, byte newColumn, int value, Piece fromPiece, Piece toPiece) {
+    public Move (int oldRow, int oldColumn, int newRow, int newColumn, int value, Piece fromPiece, Piece toPiece) {
 
         this.oldRow         = oldRow;
         this.oldColumn      = oldColumn;

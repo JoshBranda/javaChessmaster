@@ -12,18 +12,18 @@ public class Player {
 
     public Player(char color) {
         this.color = color;
-        byte row1 = 0;
-        byte row2 = 1;
+        int row1 = 0;
+        int row2 = 1;
 
         if (color == 'w') {
-            row1 = (byte) 7;
-            row2 = (byte) 6;
+            row1 = (int) 7;
+            row2 = (int) 6;
         }
 
         pieces = new Piece[16];
 
         //Initiate Pawn objects for player
-        for (byte x = 0; x < 8; x++) {
+        for (int x = 0; x < 8; x++) {
             pieces[x] = new Pawn(makeUpper('p'), row2, x);
         }
 
@@ -37,7 +37,7 @@ public class Player {
         return name;
     }
 
-    public Piece findPiece(byte row, byte column) {
+    public Piece findPiece(int row, int column) {
         for (Piece piece : pieces) {
             if (piece.getRow() == row && piece.getColumn() == column) {
                 return piece;

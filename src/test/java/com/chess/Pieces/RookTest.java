@@ -9,18 +9,19 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class PawnTest {
+public class RookTest {
+
 
     @Test
-    public void test1() {
+    public void noMoveOptionsAtStart() {
         Board board = new Board();
-        Pawn pawn = new Pawn('p', 1,0);
+        Rook rook = new Rook('r', 0,0);
         Moves moves = new Moves();
 
-        pawn.checkMoves(board, moves, null);
+        rook.checkMoves(board, moves, null);
 
         List<Move> move = moves.getMoves();
 
-        assertTrue(move.isEmpty() == false);
+        assertTrue(move.isEmpty());
     }
 }

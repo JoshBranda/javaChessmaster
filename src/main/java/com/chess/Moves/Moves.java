@@ -11,7 +11,11 @@ public class Moves {
 
     public Moves() {moves = new ArrayList<>(); }
 
-    public void addMove (byte oldRow, byte oldColumn, byte newRow, byte newColumn, int value, Piece fromPiece, Piece toPiece) {
+    public void addMove (int oldRow, int oldColumn, int newRow, int newColumn, int value, Piece fromPiece, Piece toPiece) {
         moves.add(new Move (oldRow, oldColumn, newRow, newColumn, value, fromPiece, toPiece));
+    }
+
+    public List<Move> getMoves() {
+        return moves;
     }
 }

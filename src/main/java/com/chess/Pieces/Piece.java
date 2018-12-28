@@ -8,8 +8,8 @@ abstract public class Piece {
 
     //Fields
     protected char      name;
-    protected byte      row;
-    protected byte      column;
+    protected int      row;
+    protected int      column;
     protected boolean   captured;
     protected boolean   isUpper;
 
@@ -17,17 +17,17 @@ abstract public class Piece {
     public abstract void checkMoves(Board board, Moves moves, Player opponent);
 
     //Implemented methods
-    public Piece (char name, byte row, byte column) {
+    public Piece (char name, int row, int column) {
         this.name = name;
         this.row = row;
         this.column = column;
         captured = false;
     }
-    public byte getRow() {return row;}
-    public byte getColumn() {return column;}
+    public int getRow() {return row;}
+    public int getColumn() {return column;}
     public void setCaptured(boolean captured){this.captured = captured;}
 
-    public boolean checkMove(Board board, Moves moves, Player opponent, byte row, byte column) {
+    public boolean checkMove(Board board, Moves moves, Player opponent, int row, int column) {
 
         //Add a non-attack move to the list of options
         if (board.board[row][column] == 'x') {
@@ -47,31 +47,29 @@ abstract public class Piece {
 
     public void perpendicular(Board board, Moves moves, Player opponent) {
 
-        boolean isUpper = Character.isUpperCase(name);
-
         //Checking south
-        for (byte x = (byte)(row + 1); x < 8; x++) {
+        for (int x = (row + 1); x < 8; x++) {
             if (checkMove(board, moves, opponent, x, column)) {
                 break;
             }
         }
 
         //Checking north
-        for (byte x = (byte)(row - 1); x >= 0; x--) {
+        for (int x = (row - 1); x >= 0; x--) {
             if (checkMove(board, moves, opponent, x, column)) {
                 break;
             }
         }
 
         //Checking west
-        for (byte x = (byte)(column - 1); x >= 0; x--) {
+        for (int x = (column - 1); x >= 0; x--) {
             if (checkMove(board, moves, opponent, row, x)) {
                 break;
             }
         }
 
         //Checking east
-        for (byte x = (byte)(column + 1); x < 8; x++) {
+        for (int x = (column + 1); x < 8; x++) {
             if (checkMove(board, moves, opponent, row, x)) {
                 break;
             }
@@ -81,31 +79,29 @@ abstract public class Piece {
 
     public void diagonal (Board board, Moves moves, Player opponent) {
 
-        boolean isUpper = Character.isUpperCase(name);
-
         //Checking up-left
-        for (byte x = (byte)(row - 1), y = (byte)(column - 1); x >= 0 && y >= 0; x--, y--) {
+        for (int x = (row - 1), y = (column - 1); x >= 0 && y >= 0; x--, y--) {
             if (checkMove(board, moves, opponent, x, y)) {
                 break;
             }
         }
 
         //Checking up-right
-        for (byte x = (byte)(row - 1), y = (byte)(column + 1); x >= 0 && y < 8; x--, y++) {
+        for (int x = (row - 1), y = (column + 1); x >= 0 && y < 8; x--, y++) {
             if (checkMove(board, moves, opponent, x, y)) {
                 break;
             }
         }
 
         //Checking down-right
-        for (byte x = (byte)(row + 1), y = (byte)(column + 1); x < 8 && y < 8; x++, y++) {
+        for (int x = (row + 1), y = (column + 1); x < 8 && y < 8; x++, y++) {
             if (checkMove(board, moves, opponent, x, y)) {
                 break;
             }
         }
 
         //Checking down-left
-        for (byte x = (byte)(row + 1), y = (byte)(column - 1); x < 8 && y >= 0; x++, y--) {
+        for (int x = (row + 1), y = (column - 1); x < 8 && y >= 0; x++, y--) {
             if (checkMove(board, moves, opponent, x, y)) {
                 break;
             }
